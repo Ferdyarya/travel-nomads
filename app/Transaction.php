@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
-    use softdeletes;
+    use softDeletes;
 
     protected $fillable =[
         'travel_packages_id','users_id','additional_visa',
@@ -18,7 +18,7 @@ class Transaction extends Model
     ];
     
     public function details(){
-        return $this->hasMany(TransactionDetails::class,'transaction_id', 'id');
+        return $this->hasMany(TransactionDetail::class,'transactions_id', 'id');
     }
     public function travel_package(){
         return $this->belongsTo(TravelPackage::class,'travel_packages_id', 'id');
